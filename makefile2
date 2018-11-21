@@ -1,0 +1,3 @@
+
+hello: hello.c hello.cl
+	gcc -o hello hello.c -framework opencl
