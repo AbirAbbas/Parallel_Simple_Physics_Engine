@@ -71,7 +71,7 @@ void resolveCollision(int i, int j, float * ballArray, float * ballUpdate) {
 }
 
 __kernel void moveBalls(__global float4 * ballArray,
-      __global float2 * ballUpdate, int i, int max_j) {
+      __global float2 * ballUpdate, int i) {
 
     int i,j;
     
