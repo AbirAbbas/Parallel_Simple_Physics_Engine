@@ -15,14 +15,11 @@
 #include<unistd.h>
 #include<ncurses.h>
 
-#ifdef __APPLE__
-#include <OpenCL/opencl.h>
+#ifdef APPLE
+#include <OpenCL/cl.h>
 #else
 #include <CL/cl.h>
 #endif
-
-#define MEM_SIZE (128)
-#define MAX_SOURCE_SIZE (0x100000)
 
 	// used to slow curses animation
 #define DELAY 50000
@@ -121,8 +118,8 @@ float dotProduct(float x1, float y1, float x2, float y2) {
    return(x1 * x2 + y1 * y2);
 }
 
-//calculate effects of collision between ballArray[i][] and
-//ballArray[j][] where i and j are the parameters to the function
+	// calculate effects of collision between ballArray[i][] and
+	// ballArray[j][] where i and j are the parameters to the function
 void resolveCollision(int i, int j) {
 float rvx, rvy;
 float nx, ny;
@@ -174,13 +171,13 @@ int i,j;
 
 	// update velocity of balls based upon collisions
 	// compare all balls to all other circles using two loops
-   
+   for (i=0; i<POPSIZE; i++) {
       for (j=i+1; j<POPSIZE; j++) {
-         if (ballCollision(id, j) == COLLIDE){
-            resolveCollision(id, j);
+         if (ballCollision(i, j) == COLLIDE){
+            resolveCollision(i, j);
          }
       }
-   
+   }
 
 	// move balls by calculating updating velocity and position
    for (i=0; i<POPSIZE; i++) {
