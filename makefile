@@ -50,9 +50,9 @@ endif
 endif
 
 $(PROJ): $(PROJ).c
-	$(CC) $(CFLAGS) -o $@ $^ $(INC_DIRS:%=-I%) $(LIB_DIRS:%=-L%) -lm -ncurses $(LIBS)
+	$(CC) $(CFLAGS) -o $@ $^ $(INC_DIRS:%=-I%) $(LIB_DIRS:%=-L%) -lm -lncurses $(LIBS)
 
 .PHONY: clean
 
 clean:
-        rm $(PROJ)
+	rm $(PROJ)
